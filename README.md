@@ -23,6 +23,4 @@ lab1-portfolio/
 └─ .gitignore
 ```
 
-## Ссылка на деплой
 
-https://wh076.github.io/lab_Web/
