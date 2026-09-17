@@ -25,4 +25,4 @@ lab1-portfolio/
 
 ## Ссылка на деплой
 
-_(добавить после публикации, например через GitHub Pages)_
+https://wh076.github.io/lab_Web/
