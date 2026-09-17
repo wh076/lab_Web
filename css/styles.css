@@ -1,9 +1,9 @@
 :root {
-  --color-bg: #ffffff;
-  --color-bg-alt: #fff4e6;
+  --color-bg: #ffe8d1;
+  --color-bg-alt: #ffd9b0;
   --color-surface: #ffffff;
-  --color-text: #33261a;
-  --color-text-muted: #8a7566;
+  --color-text: #3a2f28;
+  --color-text-muted: #7a6a5c;
   --color-accent: #f97316;
   --color-accent-2: #ea580c;
   --radius: 12px;
@@ -89,11 +89,36 @@ ul {
   color: var(--color-text);
 }
 
+.nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: 1px solid rgba(249, 115, 22, 0.25);
+  border-radius: 999px;
+  padding: 8px 16px;
+  margin: 4px 0;
+  color: var(--color-text);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.nav-toggle:hover {
+  border-color: var(--color-accent);
+}
+
 .main-nav ul {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 0 4px;
+}
+
+.main-nav ul.nav-open {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 16px;
 }
 
 .main-nav a {
@@ -104,6 +129,10 @@ ul {
 .main-nav a:hover,
 .main-nav a:focus {
   color: var(--color-accent-2);
+}
+
+.main-nav a.active {
+  color: var(--color-accent);
 }
 
 /* ---------- About ---------- */
@@ -129,8 +158,8 @@ ul {
 }
 
 .lead {
-  color: var(--color-accent-2);
-  font-weight: 600;
+  color: var(--color-text);
+  font-weight: 700;
 }
 
 .achievements {
@@ -197,12 +226,84 @@ ul {
   font-size: 0.9rem;
 }
 
-/* ---------- Portfolio ---------- */
+/* ---------- Portfolio carousel ---------- */
 
-.portfolio-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
+.carousel {
+  position: relative;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.carousel-viewport {
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.4s ease;
+}
+
+.carousel-slide {
+  flex: 0 0 100%;
+}
+
+.carousel-loading {
+  padding: 40px;
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: var(--color-accent);
+  color: #ffffff;
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(234, 88, 12, 0.25);
+}
+
+.carousel-btn:hover {
+  background: var(--color-accent-2);
+}
+
+.carousel-prev {
+  left: -10px;
+}
+
+.carousel-next {
+  right: -10px;
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.carousel-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  background: rgba(234, 88, 12, 0.25);
+  cursor: pointer;
+}
+
+.carousel-dot.active {
+  background: var(--color-accent);
 }
 
 .portfolio-card {
@@ -264,6 +365,168 @@ ul {
   font-size: 1.2rem;
 }
 
+.btn-primary {
+  display: inline-block;
+  margin-top: 20px;
+  background: var(--color-accent);
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background: var(--color-accent-2);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ---------- Modal ---------- */
+
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(51, 38, 26, 0.55);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 100;
+}
+
+.modal-overlay.open {
+  display: flex;
+}
+
+body.modal-lock {
+  overflow: hidden;
+}
+
+.modal {
+  position: relative;
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: 0 20px 50px rgba(51, 38, 26, 0.25);
+}
+
+.modal h3 {
+  margin: 0 0 18px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--color-text-muted);
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  color: var(--color-accent);
+}
+
+/* ---------- Feedback form ---------- */
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.form-field label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.form-field input,
+.form-field textarea {
+  font: inherit;
+  padding: 10px 12px;
+  border: 1px solid rgba(249, 115, 22, 0.25);
+  border-radius: 8px;
+  background: #ffffff;
+  color: var(--color-text);
+  resize: vertical;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.form-field.invalid input,
+.form-field.invalid textarea {
+  border-color: #dc2626;
+}
+
+.form-error {
+  min-height: 1em;
+  font-size: 0.8rem;
+  color: #dc2626;
+}
+
+.form-status {
+  margin: 12px 0 0;
+  font-weight: 600;
+  min-height: 1.2em;
+}
+
+.form-status.success {
+  color: #16a34a;
+}
+
+.form-status.error {
+  color: #dc2626;
+}
+
+/* ---------- Back to top ---------- */
+
+.back-to-top {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: var(--color-accent);
+  color: #ffffff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(234, 88, 12, 0.3);
+  transition: background 0.2s ease;
+  z-index: 20;
+}
+
+.back-to-top.visible {
+  display: flex;
+}
+
+.back-to-top:hover {
+  background: var(--color-accent-2);
+}
+
 /* ---------- Footer ---------- */
 
 .site-footer {
@@ -294,6 +557,20 @@ ul {
     justify-content: space-between;
   }
 
+  .nav-toggle {
+    display: none;
+  }
+
+  .main-nav ul,
+  .main-nav ul.nav-open {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: auto;
+    padding: 0;
+  }
+
   .about-inner {
     flex-direction: row;
     text-align: left;
@@ -308,8 +585,8 @@ ul {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .portfolio-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .carousel {
+    max-width: 480px;
   }
 
   .footer-inner {
@@ -340,7 +617,7 @@ ul {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .portfolio-grid {
-    grid-template-columns: repeat(3, 1fr);
+  .carousel {
+    max-width: 560px;
   }
 }
