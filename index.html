@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Михаил Трофимов — портфолио</title>
+  <meta name="description" content="Личная страница-визитка студента ФИТ-241 Трофимова Михаила Олеговича">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#top" class="logo">М. Трофимов</a>
+      <nav class="main-nav" aria-label="Основная навигация">
+        <ul>
+          <li><a href="#about">Обо мне</a></li>
+          <li><a href="#skills">Навыки</a></li>
+          <li><a href="#portfolio">Портфолио</a></li>
+          <li><a href="#contacts">Контакты</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <section id="about" class="section about" aria-labelledby="about-title">
+      <div class="container about-inner">
+        <img class="avatar" src="images/avatar.svg" alt="Аватар Михаила Трофимова" width="160" height="160">
+        <div class="about-text">
+          <h1 id="about-title">Трофимов Михаил Олегович</h1>
+          <p class="lead">Студент группы ФИТ-241, изучаю веб-разработку: верстку, стилизацию и основы фронтенд-инструментов.</p>
+          <p>
+            Мне интересно разбираться, как устроены современные интерфейсы, и постепенно превращать
+            учебные задания в проекты, которые не стыдно показать. Учусь писать аккуратный,
+            читаемый код и стараюсь доводить каждую работу до логичного результата.
+          </p>
+          <ul class="achievements">
+            <li>Выполняю лабораторные работы по вёрстке и адаптивному дизайну</li>
+            <li>Изучаю HTML, CSS, Flexbox и Grid на практике</li>
+            <li>Веду учебные проекты в Git и публикую их на GitHub</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section skills" aria-labelledby="skills-title">
+      <div class="container">
+        <h2 id="skills-title">Навыки</h2>
+        <ul class="skills-grid">
+          <li class="skill-card">
+            <span class="skill-icon" aria-hidden="true">📄</span>
+            <h3>HTML</h3>
+            <p>Семантическая и доступная вёрстка</p>
+          </li>
+          <li class="skill-card">
+            <span class="skill-icon" aria-hidden="true">🎨</span>
+            <h3>CSS</h3>
+            <p>Flexbox, Grid, адаптивные стили</p>
+          </li>
+          <li class="skill-card">
+            <span class="skill-icon" aria-hidden="true">⚡</span>
+            <h3>JavaScript</h3>
+            <p>Базовая логика и интерактивность</p>
+          </li>
+          <li class="skill-card">
+            <span class="skill-icon" aria-hidden="true">🔀</span>
+            <h3>Git / GitHub</h3>
+            <p>Ветки, коммиты, совместная работа</p>
+          </li>
+          <li class="skill-card">
+            <span class="skill-icon" aria-hidden="true">📱</span>
+            <h3>Адаптивная вёрстка</h3>
+            <p>Mobile, tablet и desktop брейкпоинты</p>
+          </li>
+          <li class="skill-card">
+            <span class="skill-icon" aria-hidden="true">🤝</span>
+            <h3>Работа в команде</h3>
+            <p>Совместные проекты и код-ревью</p>
+          </li>
+          <li class="skill-card">
+            <span class="skill-icon" aria-hidden="true">⚙️</span>
+            <h3>C++</h3>
+            <p>Алгоритмы и структуры данных</p>
+          </li>
+          <li class="skill-card">
+            <span class="skill-icon" aria-hidden="true">🎮</span>
+            <h3>Godot Engine</h3>
+            <p>Разработка 2D-игр и игровая логика</p>
+          </li>
+          <li class="skill-card">
+            <span class="skill-icon" aria-hidden="true">🐍</span>
+            <h3>Python</h3>
+            <p>Скрипты, автоматизация, обработка данных</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="portfolio" class="section portfolio" aria-labelledby="portfolio-title">
+      <div class="container">
+        <h2 id="portfolio-title">Портфолио</h2>
+        <div class="portfolio-grid">
+          <article class="portfolio-card">
+            <img src="images/project1.svg" alt="Превью проекта recipe-app" loading="lazy">
+            <div class="portfolio-card-body">
+              <p>Приложение для поиска и хранения кулинарных рецептов.</p>
+              <a href="https://github.com/wh076/recipe-app" target="_blank" rel="noopener noreferrer" class="portfolio-link">Репозиторий на GitHub →</a>
+            </div>
+          </article>
+          <article class="portfolio-card">
+            <img src="images/project2.svg" alt="Превью проекта library-bot" loading="lazy">
+            <div class="portfolio-card-body">
+              <p>Бот для учёта и поиска книг в библиотеке.</p>
+              <a href="https://github.com/wh076/library-bot" target="_blank" rel="noopener noreferrer" class="portfolio-link">Репозиторий на GitHub →</a>
+            </div>
+          </article>
+          <article class="portfolio-card">
+            <img src="images/project3.svg" alt="Превью проекта weather-app" loading="lazy">
+            <div class="portfolio-card-body">
+              <p>Погодное приложение с получением данных по API.</p>
+              <a href="https://github.com/wh076/WeatherApp" target="_blank" rel="noopener noreferrer" class="portfolio-link">Репозиторий на GitHub →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacts" class="section contacts" aria-labelledby="contacts-title">
+      <div class="container">
+        <h2 id="contacts-title">Контакты</h2>
+        <ul class="contacts-list">
+          <li>
+            <span class="contact-icon" aria-hidden="true">📧</span>
+            <a href="mailto:mt1337228@gmail.com">mt1337228@gmail.com</a>
+          </li>
+          <li>
+            <span class="contact-icon" aria-hidden="true">☎️</span>
+            <a href="tel:+70000000000">+7 (000) 000-00-00</a>
+          </li>
+          <li>
+            <span class="contact-icon" aria-hidden="true">💻</span>
+            <a href="https://github.com/wh076" target="_blank" rel="noopener noreferrer">github.com/wh076</a>
+          </li>
+          <li>
+            <span class="contact-icon" aria-hidden="true">✈️</span>
+            <a href="https://t.me/username" target="_blank" rel="noopener noreferrer">Telegram</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; 2026 Трофимов Михаил Олегович, ФИТ-241</p>
+      <ul class="footer-links">
+        <li><a href="#top">Наверх</a></li>
+        <li><a href="https://github.com/wh076/lab_Web" target="_blank" rel="noopener noreferrer">Репозиторий на GitHub</a></li>
+      </ul>
+    </div>
+  </footer>
+
+</body>
+</html>
