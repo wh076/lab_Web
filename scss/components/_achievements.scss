@@ -1,0 +1,14 @@
+@use '../utils' as *;
+
+.achievements {
+  display: flex;
+  flex-direction: column;
+  gap: rem($gap-sm);
+  margin-top: rem($gap-lg);
+  text-align: left;
+
+  &__item::before {
+    content: "✔ ";
+    color: var(--color-accent-hover);
+  }
+}

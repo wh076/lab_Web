@@ -1,0 +1,59 @@
+@use '../utils' as *;
+
+.form {
+  &__submit {
+    margin-top: rem($gap-xl);
+  }
+
+  &__status {
+    min-height: 1.2em;
+    margin: rem($gap-md) 0 0;
+    font-weight: 600;
+
+    &--success {
+      color: var(--color-success);
+    }
+
+    &--error {
+      color: var(--color-error);
+    }
+  }
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: rem($gap-xs);
+  margin-bottom: rem($gap-lg);
+  text-align: left;
+
+  &__label {
+    font-size: rem($font-size-small);
+    font-weight: 600;
+  }
+
+  &__input {
+    padding: rem($gap-sm) rem($gap-md);
+    border: 1px solid var(--color-border-strong);
+    border-radius: $radius-sm;
+    background: var(--color-surface);
+    color: var(--color-text);
+    font: inherit;
+    resize: vertical;
+
+    &:focus {
+      outline: none;
+      border-color: var(--color-accent);
+    }
+  }
+
+  &--invalid &__input {
+    border-color: var(--color-error);
+  }
+
+  &__error {
+    min-height: 1em;
+    font-size: rem($font-size-small);
+    color: var(--color-error);
+  }
+}

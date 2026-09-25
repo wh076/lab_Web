@@ -1,0 +1,18 @@
+@use '../utils' as *;
+
+body {
+  font-family: $font-family;
+  line-height: 1.6;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+a {
+  color: var(--color-accent-hover);
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+}

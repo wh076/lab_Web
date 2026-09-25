@@ -1,0 +1,50 @@
+@use '../utils' as *;
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  padding: rem($gap-xl);
+  background: var(--color-overlay);
+
+  &--open {
+    display: flex;
+  }
+
+  &__dialog {
+    position: relative;
+    width: 100%;
+    max-width: $modal-width;
+    padding: rem($gap-xxl) rem($gap-xl);
+    background: var(--color-surface);
+    border-radius: $radius;
+    box-shadow: $shadow-big;
+
+    @include respond-to(mobile) {
+      padding: rem($gap-xxl);
+    }
+  }
+
+  &__title {
+    margin: 0 0 rem($gap-lg);
+  }
+
+  &__close {
+    position: absolute;
+    top: rem($gap-sm);
+    right: rem($gap-md);
+    background: none;
+    border: none;
+    font-size: rem($font-size-icon);
+    line-height: 1;
+    color: var(--color-text-muted);
+    cursor: pointer;
+
+    &:hover {
+      color: var(--color-accent);
+    }
+  }
+}

@@ -1,0 +1,83 @@
+$font-family: "Segoe UI", Arial, sans-serif;
+$font-size-base: 16px;
+$font-size-small: 14px;
+$font-size-big: 18px;
+$font-size-icon: 26px;
+$font-size-h2: 26px;
+$font-size-h2-desktop: 32px;
+$font-size-h1: 29px;
+$font-size-h1-desktop: 35px;
+
+$gap-xs: 4px;
+$gap-sm: 8px;
+$gap-md: 12px;
+$gap-lg: 16px;
+$gap-xl: 20px;
+$gap-xxl: 24px;
+$gap-xxxl: 40px;
+$section-padding: 48px;
+
+$radius: 12px;
+$radius-sm: 8px;
+$radius-round: 999px;
+
+$container-width: 1100px;
+$avatar-size: 140px;
+$avatar-size-desktop: 160px;
+$icon-size: 56px;
+$carousel-width: 420px;
+$carousel-width-tablet: 480px;
+$carousel-width-desktop: 560px;
+$carousel-btn-size: 38px;
+$dot-size: 9px;
+$back-to-top-size: 44px;
+$modal-width: 420px;
+
+$transition: 0.2s ease;
+$transition-slow: 0.4s ease;
+
+$shadow: 0 2px 10px var(--color-shadow);
+$shadow-hover: 0 8px 20px var(--color-shadow);
+$shadow-big: 0 20px 50px var(--color-shadow);
+
+$breakpoints: (
+  mobile: 480px,
+  tablet: 768px,
+  desktop: 1024px,
+);
+
+$theme-light: (
+  bg: #ffe8d1,
+  bg-alt: #ffd9b0,
+  surface: #ffffff,
+  header: rgba(255, 255, 255, 0.92),
+  text: #3a2f28,
+  text-muted: #7a6a5c,
+  accent: #f97316,
+  accent-hover: #ea580c,
+  on-accent: #ffffff,
+  border: rgba(249, 115, 22, 0.15),
+  border-strong: rgba(249, 115, 22, 0.3),
+  shadow: rgba(234, 88, 12, 0.12),
+  overlay: rgba(51, 38, 26, 0.55),
+  error: #dc2626,
+  success: #16a34a,
+);
+
+$theme-dark: (
+  bg: #1a1411,
+  bg-alt: #231c18,
+  surface: #2c2420,
+  header: rgba(26, 20, 17, 0.92),
+  text: #f3e7dc,
+  text-muted: #b9a797,
+  accent: #fb923c,
+  accent-hover: #fdba74,
+  on-accent: #1a1411,
+  border: rgba(251, 146, 60, 0.2),
+  border-strong: rgba(251, 146, 60, 0.4),
+  shadow: rgba(0, 0, 0, 0.4),
+  overlay: rgba(0, 0, 0, 0.65),
+  error: #f87171,
+  success: #4ade80,
+);

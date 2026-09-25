@@ -1,0 +1,36 @@
+@use '../utils' as *;
+
+.nav {
+  &__list {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: rem($gap-md);
+    padding: rem($gap-md) 0 rem($gap-xs);
+
+    @include respond-to(tablet) {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 0;
+    }
+  }
+
+  &__list--open {
+    display: flex;
+  }
+
+  &__link {
+    color: var(--color-text-muted);
+    font-weight: 600;
+
+    &:hover {
+      color: var(--color-accent-hover);
+    }
+  }
+
+  &__link--active {
+    color: var(--color-accent);
+  }
+}

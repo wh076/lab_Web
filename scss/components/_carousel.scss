@@ -1,0 +1,84 @@
+@use '../utils' as *;
+
+.carousel {
+  position: relative;
+  max-width: $carousel-width;
+  margin: 0 auto;
+
+  @include respond-to(tablet) {
+    max-width: $carousel-width-tablet;
+  }
+
+  @include respond-to(desktop) {
+    max-width: $carousel-width-desktop;
+  }
+
+  &__viewport {
+    overflow: hidden;
+    border-radius: $radius;
+  }
+
+  &__track {
+    display: flex;
+    transition: transform $transition-slow;
+  }
+
+  &__slide {
+    flex: 0 0 100%;
+  }
+
+  &__message {
+    padding: rem($gap-xxxl);
+    text-align: center;
+    color: var(--color-text-muted);
+  }
+
+  &__btn {
+    @include flex-center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: $carousel-btn-size;
+    height: $carousel-btn-size;
+    border: none;
+    border-radius: 50%;
+    background: var(--color-accent);
+    color: var(--color-on-accent);
+    font-size: rem($font-size-big);
+    cursor: pointer;
+    box-shadow: $shadow;
+
+    &:hover {
+      background: var(--color-accent-hover);
+    }
+  }
+
+  &__btn--prev {
+    left: -10px;
+  }
+
+  &__btn--next {
+    right: -10px;
+  }
+
+  &__dots {
+    display: flex;
+    justify-content: center;
+    gap: rem($gap-sm);
+    margin-top: rem($gap-lg);
+  }
+
+  &__dot {
+    width: $dot-size;
+    height: $dot-size;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: var(--color-border-strong);
+    cursor: pointer;
+  }
+
+  &__dot--active {
+    background: var(--color-accent);
+  }
+}

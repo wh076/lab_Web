@@ -1,0 +1,18 @@
+@use 'sass:map';
+@use 'variables' as *;
+
+@mixin respond-to($breakpoint) {
+  @if not map.has-key($breakpoints, $breakpoint) {
+    @error "Нет такого брейкпоинта: #{$breakpoint}";
+  }
+
+  @media (min-width: map.get($breakpoints, $breakpoint)) {
+    @content;
+  }
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

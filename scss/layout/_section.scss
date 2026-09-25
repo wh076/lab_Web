@@ -1,0 +1,18 @@
+@use '../utils' as *;
+
+.section {
+  padding: rem($section-padding) 0;
+
+  &--alt {
+    background: var(--color-bg-alt);
+  }
+
+  &__title {
+    margin-bottom: rem($gap-xxl);
+    font-size: rem($font-size-h2);
+
+    @include respond-to(desktop) {
+      font-size: rem($font-size-h2-desktop);
+    }
+  }
+}

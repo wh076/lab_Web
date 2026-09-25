@@ -1,0 +1,20 @@
+@use '../utils' as *;
+
+.contacts {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: rem($gap-md);
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: rem($gap-sm);
+    font-size: rem($font-size-big);
+  }
+
+  &__button {
+    margin-top: rem($gap-xl);
+  }
+}

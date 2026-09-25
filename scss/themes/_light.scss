@@ -1,0 +1,7 @@
+@use '../utils' as *;
+
+:root {
+  @each $name, $value in $theme-light {
+    --color-#{$name}: #{$value};
+  }
+}
