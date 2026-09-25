@@ -1,0 +1,24 @@
+{
+  "name": "lab_web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Сайт-визитка Трофимова Михаила Олеговича (ФИТ-241): стили на Sass (SCSS), интерактив на jQuery",
+  "scripts": {
+    "sass:dev": "sass --watch scss/main.scss:dist/css/main.css",
+    "build": "sass --no-source-map --style=compressed scss/main.scss:dist/css/main.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wh076/lab_Web.git"
+  },
+  "keywords": [],
+  "author": "Трофимов Михаил Олегович",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wh076/lab_Web/issues"
+  },
+  "homepage": "https://github.com/wh076/lab_Web#readme",
+  "devDependencies": {
+    "sass": "^1.105.0"
+  }
+}
