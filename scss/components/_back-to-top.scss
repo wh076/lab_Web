@@ -1,0 +1,27 @@
+@use '../utils' as *;
+
+.back-to-top {
+  @include flex-center;
+  display: none;
+  position: fixed;
+  right: rem($gap-xl);
+  bottom: rem($gap-xl);
+  z-index: 20;
+  width: $back-to-top-size;
+  height: $back-to-top-size;
+  border: none;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  font-size: rem($font-size-big);
+  cursor: pointer;
+  box-shadow: $shadow;
+
+  &--visible {
+    display: flex;
+  }
+
+  &:hover {
+    background: var(--color-accent-hover);
+  }
+}

@@ -1,0 +1,32 @@
+@use '../utils' as *;
+
+.portfolio-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: $radius;
+  box-shadow: $shadow;
+
+  &__image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+  }
+
+  &__body {
+    flex: 1;
+    padding: rem($gap-lg);
+  }
+
+  &__text {
+    margin: 0 0 rem($gap-md);
+    color: var(--color-text-muted);
+  }
+
+  &__link {
+    font-weight: 600;
+  }
+}

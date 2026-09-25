@@ -1,0 +1,15 @@
+@use '../utils' as *;
+
+.skills__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: rem($gap-lg);
+
+  @include respond-to(tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to(desktop) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

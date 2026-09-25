@@ -1,0 +1,7 @@
+@use '../utils' as *;
+
+[data-theme='dark'] {
+  @each $name, $value in $theme-dark {
+    --color-#{$name}: #{$value};
+  }
+}

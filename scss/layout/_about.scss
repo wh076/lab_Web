@@ -1,0 +1,42 @@
+@use '../utils' as *;
+
+.about {
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: rem($gap-xxl);
+    text-align: center;
+
+    @include respond-to(tablet) {
+      flex-direction: row;
+      align-items: flex-start;
+      text-align: left;
+    }
+  }
+
+  &__avatar {
+    flex-shrink: 0;
+    width: $avatar-size;
+    height: $avatar-size;
+    border-radius: 50%;
+
+    @include respond-to(desktop) {
+      width: $avatar-size-desktop;
+      height: $avatar-size-desktop;
+    }
+  }
+
+  &__title {
+    margin: 0 0 rem($gap-md);
+    font-size: rem($font-size-h1);
+
+    @include respond-to(desktop) {
+      font-size: rem($font-size-h1-desktop);
+    }
+  }
+
+  &__lead {
+    font-weight: 700;
+  }
+}

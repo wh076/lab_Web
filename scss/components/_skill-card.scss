@@ -1,0 +1,39 @@
+@use '../utils' as *;
+
+.skill-card {
+  padding: rem($gap-xxl) rem($gap-lg);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: $radius;
+  box-shadow: $shadow;
+  text-align: center;
+  transition: transform $transition, border-color $transition, box-shadow $transition;
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-accent);
+    box-shadow: $shadow-hover;
+  }
+
+  &__icon {
+    @include flex-center;
+    display: inline-flex;
+    width: $icon-size;
+    height: $icon-size;
+    margin-bottom: rem($gap-md);
+    border-radius: 50%;
+    font-size: rem($font-size-icon);
+    background: linear-gradient(135deg, var(--color-accent), var(--color-accent-hover));
+  }
+
+  &__title {
+    margin: 0 0 rem($gap-sm);
+    font-size: rem($font-size-big);
+  }
+
+  &__text {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: rem($font-size-small);
+  }
+}
