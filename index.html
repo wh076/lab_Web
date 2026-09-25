@@ -5,22 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Михаил Трофимов — портфолио</title>
   <meta name="description" content="Личная страница-визитка студента ФИТ-241 Трофимова Михаила Олеговича">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="dist/css/main.css">
 </head>
-<body>
+<body class="page">
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="#top" class="logo">М. Трофимов</a>
-      <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mainNavList">
-        <span aria-hidden="true">☰</span> Меню
-      </button>
-      <nav class="main-nav" aria-label="Основная навигация">
-        <ul id="mainNavList">
-          <li><a href="#about">Обо мне</a></li>
-          <li><a href="#skills">Навыки</a></li>
-          <li><a href="#portfolio">Портфолио</a></li>
-          <li><a href="#contacts">Контакты</a></li>
+  <header class="header">
+    <div class="container header__inner">
+      <a href="#top" class="header__logo">М. Трофимов</a>
+      <div class="header__controls">
+        <button type="button" class="button button--outline button--small header__nav-toggle js-nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mainNavList">
+          <span aria-hidden="true">☰</span> Меню
+        </button>
+        <button type="button" class="button button--outline button--small js-theme-toggle">🌙 Тема</button>
+      </div>
+      <nav class="nav" aria-label="Основная навигация">
+        <ul class="nav__list js-nav-list" id="mainNavList">
+          <li><a class="nav__link js-nav-link" href="#about">Обо мне</a></li>
+          <li><a class="nav__link js-nav-link" href="#skills">Навыки</a></li>
+          <li><a class="nav__link js-nav-link" href="#portfolio">Портфолио</a></li>
+          <li><a class="nav__link js-nav-link" href="#contacts">Контакты</a></li>
         </ul>
       </nav>
     </div>
@@ -29,73 +32,73 @@
   <main id="top">
 
     <section id="about" class="section about" aria-labelledby="about-title">
-      <div class="container about-inner">
-        <img class="avatar" src="images/avatar.jpg" alt="Аватар Михаила Трофимова" width="160" height="160">
-        <div class="about-text">
-          <h1 id="about-title">Трофимов Михаил Олегович</h1>
-          <p class="lead">Студент группы ФИТ-241, изучаю веб-разработку: верстку, стилизацию и основы фронтенд-инструментов.</p>
+      <div class="container about__inner">
+        <img class="about__avatar" src="images/avatar.jpg" alt="Аватар Михаила Трофимова" width="160" height="160">
+        <div class="about__text">
+          <h1 class="about__title" id="about-title">Трофимов Михаил Олегович</h1>
+          <p class="about__lead">Студент группы ФИТ-241, изучаю веб-разработку: верстку, стилизацию и основы фронтенд-инструментов.</p>
           <p>
             Мне интересно разбираться, как устроены современные интерфейсы, и постепенно превращать
             учебные задания в проекты, которые не стыдно показать. Учусь писать аккуратный,
             читаемый код и стараюсь доводить каждую работу до логичного результата.
           </p>
           <ul class="achievements">
-            <li>Выполняю лабораторные работы по вёрстке и адаптивному дизайну</li>
-            <li>Изучаю HTML, CSS, Flexbox и Grid на практике</li>
-            <li>Веду учебные проекты в Git и публикую их на GitHub</li>
+            <li class="achievements__item">Выполняю лабораторные работы по вёрстке и адаптивному дизайну</li>
+            <li class="achievements__item">Изучаю HTML, CSS, Flexbox и Grid на практике</li>
+            <li class="achievements__item">Веду учебные проекты в Git и публикую их на GitHub</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <section id="skills" class="section skills" aria-labelledby="skills-title">
+    <section id="skills" class="section section--alt skills" aria-labelledby="skills-title">
       <div class="container">
-        <h2 id="skills-title">Навыки</h2>
-        <ul class="skills-grid">
+        <h2 class="section__title" id="skills-title">Навыки</h2>
+        <ul class="skills__grid">
           <li class="skill-card">
-            <span class="skill-icon" aria-hidden="true">📄</span>
-            <h3>HTML</h3>
-            <p>Семантическая и доступная вёрстка</p>
+            <span class="skill-card__icon" aria-hidden="true">📄</span>
+            <h3 class="skill-card__title">HTML</h3>
+            <p class="skill-card__text">Семантическая и доступная вёрстка</p>
           </li>
           <li class="skill-card">
-            <span class="skill-icon" aria-hidden="true">🎨</span>
-            <h3>CSS</h3>
-            <p>Flexbox, Grid, адаптивные стили</p>
+            <span class="skill-card__icon" aria-hidden="true">🎨</span>
+            <h3 class="skill-card__title">CSS</h3>
+            <p class="skill-card__text">Flexbox, Grid, адаптивные стили</p>
           </li>
           <li class="skill-card">
-            <span class="skill-icon" aria-hidden="true">⚡</span>
-            <h3>JavaScript</h3>
-            <p>Базовая логика и интерактивность</p>
+            <span class="skill-card__icon" aria-hidden="true">⚡</span>
+            <h3 class="skill-card__title">JavaScript</h3>
+            <p class="skill-card__text">Базовая логика и интерактивность</p>
           </li>
           <li class="skill-card">
-            <span class="skill-icon" aria-hidden="true">🔀</span>
-            <h3>Git / GitHub</h3>
-            <p>Ветки, коммиты, совместная работа</p>
+            <span class="skill-card__icon" aria-hidden="true">🔀</span>
+            <h3 class="skill-card__title">Git / GitHub</h3>
+            <p class="skill-card__text">Ветки, коммиты, совместная работа</p>
           </li>
           <li class="skill-card">
-            <span class="skill-icon" aria-hidden="true">📱</span>
-            <h3>Адаптивная вёрстка</h3>
-            <p>Mobile, tablet и desktop брейкпоинты</p>
+            <span class="skill-card__icon" aria-hidden="true">📱</span>
+            <h3 class="skill-card__title">Адаптивная вёрстка</h3>
+            <p class="skill-card__text">Mobile, tablet и desktop брейкпоинты</p>
           </li>
           <li class="skill-card">
-            <span class="skill-icon" aria-hidden="true">🤝</span>
-            <h3>Работа в команде</h3>
-            <p>Совместные проекты и код-ревью</p>
+            <span class="skill-card__icon" aria-hidden="true">🤝</span>
+            <h3 class="skill-card__title">Работа в команде</h3>
+            <p class="skill-card__text">Совместные проекты и код-ревью</p>
           </li>
           <li class="skill-card">
-            <span class="skill-icon" aria-hidden="true">⚙️</span>
-            <h3>C++</h3>
-            <p>Алгоритмы и структуры данных</p>
+            <span class="skill-card__icon" aria-hidden="true">⚙️</span>
+            <h3 class="skill-card__title">C++</h3>
+            <p class="skill-card__text">Алгоритмы и структуры данных</p>
           </li>
           <li class="skill-card">
-            <span class="skill-icon" aria-hidden="true">🎮</span>
-            <h3>Godot Engine</h3>
-            <p>Разработка 2D-игр и игровая логика</p>
+            <span class="skill-card__icon" aria-hidden="true">🎮</span>
+            <h3 class="skill-card__title">Godot Engine</h3>
+            <p class="skill-card__text">Разработка 2D-игр и игровая логика</p>
           </li>
           <li class="skill-card">
-            <span class="skill-icon" aria-hidden="true">🐍</span>
-            <h3>Python</h3>
-            <p>Скрипты, автоматизация, обработка данных</p>
+            <span class="skill-card__icon" aria-hidden="true">🐍</span>
+            <h3 class="skill-card__title">Python</h3>
+            <p class="skill-card__text">Скрипты, автоматизация, обработка данных</p>
           </li>
         </ul>
       </div>
@@ -103,84 +106,84 @@
 
     <section id="portfolio" class="section portfolio" aria-labelledby="portfolio-title">
       <div class="container">
-        <h2 id="portfolio-title">Портфолио</h2>
-        <div class="carousel" id="portfolioCarousel" data-autoplay="5000">
-          <div class="carousel-viewport">
-            <ul class="carousel-track" id="portfolioTrack" aria-live="polite">
-              <li class="carousel-slide carousel-loading">Загрузка проектов…</li>
+        <h2 class="section__title" id="portfolio-title">Портфолио</h2>
+        <div class="carousel js-carousel" id="portfolioCarousel" data-autoplay="5000">
+          <div class="carousel__viewport">
+            <ul class="carousel__track js-carousel-track" id="portfolioTrack" aria-live="polite">
+              <li class="carousel__slide carousel__message">Загрузка проектов…</li>
             </ul>
           </div>
-          <button type="button" class="carousel-btn carousel-prev" aria-label="Предыдущий проект">‹</button>
-          <button type="button" class="carousel-btn carousel-next" aria-label="Следующий проект">›</button>
-          <div class="carousel-dots" id="portfolioDots"></div>
+          <button type="button" class="carousel__btn carousel__btn--prev js-carousel-prev" aria-label="Предыдущий проект">‹</button>
+          <button type="button" class="carousel__btn carousel__btn--next js-carousel-next" aria-label="Следующий проект">›</button>
+          <div class="carousel__dots js-carousel-dots" id="portfolioDots"></div>
         </div>
       </div>
     </section>
 
-    <section id="contacts" class="section contacts" aria-labelledby="contacts-title">
+    <section id="contacts" class="section section--alt contacts" aria-labelledby="contacts-title">
       <div class="container">
-        <h2 id="contacts-title">Контакты</h2>
-        <ul class="contacts-list">
-          <li>
-            <span class="contact-icon" aria-hidden="true">📧</span>
+        <h2 class="section__title" id="contacts-title">Контакты</h2>
+        <ul class="contacts__list">
+          <li class="contacts__item">
+            <span aria-hidden="true">📧</span>
             <a href="mailto:mt1337228@gmail.com">mt1337228@gmail.com</a>
           </li>
-          <li>
-            <span class="contact-icon" aria-hidden="true">☎️</span>
+          <li class="contacts__item">
+            <span aria-hidden="true">☎️</span>
             <a href="tel:+70000000000">+7 (000) 000-00-00</a>
           </li>
-          <li>
-            <span class="contact-icon" aria-hidden="true">💻</span>
+          <li class="contacts__item">
+            <span aria-hidden="true">💻</span>
             <a href="https://github.com/wh076" target="_blank" rel="noopener noreferrer">github.com/wh076</a>
           </li>
-          <li>
-            <span class="contact-icon" aria-hidden="true">✈️</span>
+          <li class="contacts__item">
+            <span aria-hidden="true">✈️</span>
             <a href="https://t.me/username" target="_blank" rel="noopener noreferrer">Telegram</a>
           </li>
         </ul>
-        <button type="button" class="btn-primary js-open-modal" data-modal-target="#feedbackModal">Написать мне</button>
+        <button type="button" class="button button--primary contacts__button js-modal-open" data-modal-target="#feedbackModal">Написать мне</button>
       </div>
     </section>
 
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
+  <footer class="footer">
+    <div class="container footer__inner">
       <p>&copy; 2026 Трофимов Михаил Олегович, ФИТ-241</p>
-      <ul class="footer-links">
+      <ul class="footer__links">
         <li><a href="#top">Наверх</a></li>
         <li><a href="https://github.com/wh076/lab_Web" target="_blank" rel="noopener noreferrer">Репозиторий на GitHub</a></li>
       </ul>
     </div>
   </footer>
 
-  <div class="modal-overlay" id="feedbackModal" aria-hidden="true">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="feedbackModalTitle">
-      <button type="button" class="modal-close" aria-label="Закрыть окно">&times;</button>
-      <h3 id="feedbackModalTitle">Обратная связь</h3>
-      <form id="feedbackForm" novalidate>
-        <div class="form-field">
-          <label for="fbName">Имя</label>
-          <input type="text" id="fbName" name="name" autocomplete="name">
-          <span class="form-error" data-error-for="fbName"></span>
+  <div class="modal js-modal" id="feedbackModal" aria-hidden="true">
+    <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="feedbackModalTitle">
+      <button type="button" class="modal__close js-modal-close" aria-label="Закрыть окно">&times;</button>
+      <h3 class="modal__title" id="feedbackModalTitle">Обратная связь</h3>
+      <form class="form" id="feedbackForm" novalidate>
+        <div class="form-field js-form-field">
+          <label class="form-field__label" for="fbName">Имя</label>
+          <input class="form-field__input" type="text" id="fbName" name="name" autocomplete="name">
+          <span class="form-field__error" data-error-for="fbName"></span>
         </div>
-        <div class="form-field">
-          <label for="fbEmail">Email</label>
-          <input type="email" id="fbEmail" name="email" autocomplete="email">
-          <span class="form-error" data-error-for="fbEmail"></span>
+        <div class="form-field js-form-field">
+          <label class="form-field__label" for="fbEmail">Email</label>
+          <input class="form-field__input" type="email" id="fbEmail" name="email" autocomplete="email">
+          <span class="form-field__error" data-error-for="fbEmail"></span>
         </div>
-        <div class="form-field">
-          <label for="fbMessage">Сообщение</label>
-          <textarea id="fbMessage" name="message" rows="4"></textarea>
-          <span class="form-error" data-error-for="fbMessage"></span>
+        <div class="form-field js-form-field">
+          <label class="form-field__label" for="fbMessage">Сообщение</label>
+          <textarea class="form-field__input" id="fbMessage" name="message" rows="4"></textarea>
+          <span class="form-field__error" data-error-for="fbMessage"></span>
         </div>
-        <button type="submit" class="btn-primary" id="fbSubmit">Отправить</button>
-        <p class="form-status" id="fbStatus" role="status" aria-live="polite"></p>
+        <button type="submit" class="button button--primary form__submit" id="fbSubmit">Отправить</button>
+        <p class="form__status" id="fbStatus" role="status" aria-live="polite"></p>
       </form>
     </div>
   </div>
 
-  <button type="button" id="backToTop" class="back-to-top" aria-label="Наверх">↑</button>
+  <button type="button" id="backToTop" class="back-to-top js-back-to-top" aria-label="Наверх">↑</button>
 
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="js/script.js"></script>
