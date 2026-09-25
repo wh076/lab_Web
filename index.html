@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Михаил Трофимов — портфолио</title>
+  <meta name="description" content="Личная страница-визитка студента ФИТ-241 Трофимова Михаила Олеговича">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#top" class="logo">М. Трофимов</a>
+      <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mainNavList">
+        <span aria-hidden="true">☰</span> Меню
+      </button>
+      <nav class="main-nav" aria-label="Основная навигация">
+        <ul id="mainNavList">
+          <li><a href="#about">Обо мне</a></li>
+          <li><a href="#skills">Навыки</a></li>
+          <li><a href="#portfolio">Портфолио</a></li>
+          <li><a href="#contacts">Контакты</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <section id="about" class="section about" aria-labelledby="about-title">
+      <div class="container about-inner">
+        <img class="avatar" src="images/avatar.jpg" alt="Аватар Михаила Трофимова" width="160" height="160">
+        <div class="about-text">
+          <h1 id="about-title">Трофимов Михаил Олегович</h1>
+          <p class="lead">Студент группы ФИТ-241, изучаю веб-разработку: верстку, стилизацию и основы фронтенд-инструментов.</p>
+          <p>
+            Мне интересно разбираться, как устроены современные интерфейсы, и постепенно превращать
+            учебные задания в проекты, которые не стыдно показать. Учусь писать аккуратный,
+            читаемый код и стараюсь доводить каждую работу до логичного результата.
+          </p>
+          <ul class="achievements">
+            <li>Выполняю лабораторные работы по вёрстке и адаптивному дизайну</li>
+            <li>Изучаю HTML, CSS, Flexbox и Grid на практике</li>
+            <li>Веду учебные проекты в Git и публикую их на GitHub</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section skills" aria-labelledby="skills-title">
+      <div class="container">
+        <h2 id="skills-title">Навыки</h2>
+        <ul class="skills-grid">
+          <li class="skill-card">
+            <span class="skill-icon" aria-hidden="true">📄</span>
+            <h3>HTML</h3>
+            <p>Семантическая и доступная вёрстка</p>
+          </li>
+          <li class="skill-card">
+            <span class="skill-icon" aria-hidden="true">🎨</span>
+            <h3>CSS</h3>
+            <p>Flexbox, Grid, адаптивные стили</p>
+          </li>
+          <li class="skill-card">
+            <span class="skill-icon" aria-hidden="true">⚡</span>
+            <h3>JavaScript</h3>
+            <p>Базовая логика и интерактивность</p>
+          </li>
+          <li class="skill-card">
+            <span class="skill-icon" aria-hidden="true">🔀</span>
+            <h3>Git / GitHub</h3>
+            <p>Ветки, коммиты, совместная работа</p>
+          </li>
+          <li class="skill-card">
+            <span class="skill-icon" aria-hidden="true">📱</span>
+            <h3>Адаптивная вёрстка</h3>
+            <p>Mobile, tablet и desktop брейкпоинты</p>
+          </li>
+          <li class="skill-card">
+            <span class="skill-icon" aria-hidden="true">🤝</span>
+            <h3>Работа в команде</h3>
+            <p>Совместные проекты и код-ревью</p>
+          </li>
+          <li class="skill-card">
+            <span class="skill-icon" aria-hidden="true">⚙️</span>
+            <h3>C++</h3>
+            <p>Алгоритмы и структуры данных</p>
+          </li>
+          <li class="skill-card">
+            <span class="skill-icon" aria-hidden="true">🎮</span>
+            <h3>Godot Engine</h3>
+            <p>Разработка 2D-игр и игровая логика</p>
+          </li>
+          <li class="skill-card">
+            <span class="skill-icon" aria-hidden="true">🐍</span>
+            <h3>Python</h3>
+            <p>Скрипты, автоматизация, обработка данных</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="portfolio" class="section portfolio" aria-labelledby="portfolio-title">
+      <div class="container">
+        <h2 id="portfolio-title">Портфолио</h2>
+        <div class="carousel" id="portfolioCarousel" data-autoplay="5000">
+          <div class="carousel-viewport">
+            <ul class="carousel-track" id="portfolioTrack" aria-live="polite">
+              <li class="carousel-slide carousel-loading">Загрузка проектов…</li>
+            </ul>
+          </div>
+          <button type="button" class="carousel-btn carousel-prev" aria-label="Предыдущий проект">‹</button>
+          <button type="button" class="carousel-btn carousel-next" aria-label="Следующий проект">›</button>
+          <div class="carousel-dots" id="portfolioDots"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacts" class="section contacts" aria-labelledby="contacts-title">
+      <div class="container">
+        <h2 id="contacts-title">Контакты</h2>
+        <ul class="contacts-list">
+          <li>
+            <span class="contact-icon" aria-hidden="true">📧</span>
+            <a href="mailto:mt1337228@gmail.com">mt1337228@gmail.com</a>
+          </li>
+          <li>
+            <span class="contact-icon" aria-hidden="true">☎️</span>
+            <a href="tel:+70000000000">+7 (000) 000-00-00</a>
+          </li>
+          <li>
+            <span class="contact-icon" aria-hidden="true">💻</span>
+            <a href="https://github.com/wh076" target="_blank" rel="noopener noreferrer">github.com/wh076</a>
+          </li>
+          <li>
+            <span class="contact-icon" aria-hidden="true">✈️</span>
+            <a href="https://t.me/username" target="_blank" rel="noopener noreferrer">Telegram</a>
+          </li>
+        </ul>
+        <button type="button" class="btn-primary js-open-modal" data-modal-target="#feedbackModal">Написать мне</button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; 2026 Трофимов Михаил Олегович, ФИТ-241</p>
+      <ul class="footer-links">
+        <li><a href="#top">Наверх</a></li>
+        <li><a href="https://github.com/wh076/lab_Web" target="_blank" rel="noopener noreferrer">Репозиторий на GitHub</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <div class="modal-overlay" id="feedbackModal" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="feedbackModalTitle">
+      <button type="button" class="modal-close" aria-label="Закрыть окно">&times;</button>
+      <h3 id="feedbackModalTitle">Обратная связь</h3>
+      <form id="feedbackForm" novalidate>
+        <div class="form-field">
+          <label for="fbName">Имя</label>
+          <input type="text" id="fbName" name="name" autocomplete="name">
+          <span class="form-error" data-error-for="fbName"></span>
+        </div>
+        <div class="form-field">
+          <label for="fbEmail">Email</label>
+          <input type="email" id="fbEmail" name="email" autocomplete="email">
+          <span class="form-error" data-error-for="fbEmail"></span>
+        </div>
+        <div class="form-field">
+          <label for="fbMessage">Сообщение</label>
+          <textarea id="fbMessage" name="message" rows="4"></textarea>
+          <span class="form-error" data-error-for="fbMessage"></span>
+        </div>
+        <button type="submit" class="btn-primary" id="fbSubmit">Отправить</button>
+        <p class="form-status" id="fbStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+
+  <button type="button" id="backToTop" class="back-to-top" aria-label="Наверх">↑</button>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

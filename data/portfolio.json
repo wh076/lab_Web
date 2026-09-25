@@ -1,0 +1,20 @@
+[
+  {
+    "title": "recipe-app",
+    "description": "Приложение для поиска и хранения кулинарных рецептов.",
+    "image": "images/project1.svg",
+    "repo": "https://github.com/wh076/recipe-app"
+  },
+  {
+    "title": "library-bot",
+    "description": "Бот для учёта и поиска книг в библиотеке.",
+    "image": "images/project2.svg",
+    "repo": "https://github.com/wh076/library-bot"
+  },
+  {
+    "title": "weather-app",
+    "description": "Погодное приложение с получением данных по API.",
+    "image": "images/project3.svg",
+    "repo": "https://github.com/wh076/WeatherApp"
+  }
+]
