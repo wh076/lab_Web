@@ -21,6 +21,13 @@
   }
 }
 
+// Стили для широких экранов (mobile-first)
+@mixin desktop {
+  @media (min-width: $breakpoint-desktop) {
+    @content;
+  }
+}
+
 // Общий вид текстовых полей
 @mixin field {
   width: 100%;

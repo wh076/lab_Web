@@ -13,15 +13,20 @@
   display: flex;
   align-items: center;
   gap: $space-s;
-  padding: $space-s $space-m;
+  padding: $space-xs $space-s;
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: $radius;
 
+  @include desktop {
+    gap: $space-m;
+    padding: $space-s $space-m;
+  }
+
   &__checkbox {
     flex-shrink: 0;
-    width: $icon-size;
-    height: $icon-size;
+    width: $checkbox-size;
+    height: $checkbox-size;
     margin: 0;
     accent-color: var(--color-primary);
     cursor: pointer;
@@ -32,6 +37,7 @@
   &__title {
     flex-grow: 1;
     min-width: 0;
+    padding: $space-s 0;
     overflow-wrap: anywhere;
     cursor: pointer;
   }

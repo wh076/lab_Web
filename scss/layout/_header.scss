@@ -6,14 +6,25 @@
 
   &__inner {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    gap: $space-m;
-    padding-top: $space-m;
-    padding-bottom: $space-m;
+    gap: $space-s;
+    padding-top: $space-s;
+    padding-bottom: $space-s;
+
+    @include desktop {
+      gap: $space-m;
+      padding-top: $space-m;
+      padding-bottom: $space-m;
+    }
   }
 
   &__title {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
+
+    @include desktop {
+      font-size: 1.5rem;
+    }
   }
 }

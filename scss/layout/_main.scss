@@ -1,13 +1,23 @@
 @use "../utils" as *;
 
 .main {
-  padding-top: $space-l;
-  padding-bottom: $space-xl;
+  padding-top: $space-m;
+  padding-bottom: $space-l;
+
+  @include desktop {
+    padding-top: $space-l;
+    padding-bottom: $space-xl;
+  }
 }
 
 // Панель с поиском и кнопкой добавления
 .toolbar {
   display: flex;
+  flex-direction: column;
   gap: $space-s;
   margin-bottom: $space-m;
+
+  @include desktop {
+    flex-direction: row;
+  }
 }
