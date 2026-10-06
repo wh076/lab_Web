@@ -1,0 +1,14 @@
+{
+  "name": "todo-list",
+  "version": "1.0.0",
+  "description": "Список задач на Tailwind CSS и JavaScript",
+  "private": true,
+  "scripts": {
+    "tailwind:dev": "tailwindcss -i ./src/input.css -o ./dist/css/main.css --watch",
+    "build": "tailwindcss -i ./src/input.css -o ./dist/css/main.css --minify"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "tailwindcss": "^4.3.3"
+  }
+}
