@@ -1,0 +1,36 @@
+@use "../utils" as *;
+
+.modal {
+  width: calc(100% - #{$space-xl});
+  max-width: 420px;
+  padding: $space-l;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: $radius;
+
+  &::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  &__title {
+    margin-bottom: $space-m;
+    font-size: 1.25rem;
+  }
+
+  &__label {
+    display: block;
+    margin-bottom: $space-xs;
+  }
+
+  &__input {
+    @include field;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: $space-s;
+    margin-top: $space-l;
+  }
+}

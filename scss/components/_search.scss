@@ -1,0 +1,9 @@
+@use "../utils" as *;
+
+.search {
+  flex-grow: 1;
+
+  &__input {
+    @include field;
+  }
+}

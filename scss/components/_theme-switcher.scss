@@ -1,0 +1,10 @@
+@use "../utils" as *;
+
+.theme-switcher {
+  flex-shrink: 0;
+
+  // Нажатое состояние (включена тёмная тема)
+  &[aria-pressed="true"] {
+    border-color: var(--color-primary);
+  }
+}

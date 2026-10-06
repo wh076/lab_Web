@@ -1,0 +1,47 @@
+@use "../utils" as *;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-s;
+  min-height: $control-height;
+  padding: $space-s $space-m;
+  font: inherit;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+  border-radius: $radius;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--color-hover);
+  }
+
+  @include focus;
+
+  &--primary {
+    color: var(--color-on-primary);
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+
+    &:hover {
+      background-color: var(--color-primary-hover);
+    }
+  }
+
+  &--icon {
+    min-width: $control-height;
+    padding: $space-s;
+  }
+
+  &--danger {
+    color: var(--color-danger);
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    width: $icon-size;
+    height: $icon-size;
+  }
+}

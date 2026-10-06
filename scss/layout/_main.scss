@@ -1,0 +1,13 @@
+@use "../utils" as *;
+
+.main {
+  padding-top: $space-l;
+  padding-bottom: $space-xl;
+}
+
+// Панель с поиском и кнопкой добавления
+.toolbar {
+  display: flex;
+  gap: $space-s;
+  margin-bottom: $space-m;
+}

@@ -1,0 +1,34 @@
+// Светлая тема (по умолчанию)
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+  --color-bg: #f3f4f6;
+  --color-surface: #ffffff;
+  --color-text: #1f2328;
+  --color-text-muted: #57606a;
+  --color-border: #d0d7de;
+  --color-border-strong: #8c959f;
+  --color-hover: #eef1f4;
+  --color-primary: #1f5fbf;
+  --color-primary-hover: #184c99;
+  --color-on-primary: #ffffff;
+  --color-danger: #b42318;
+  --color-focus: #1f5fbf;
+}
+
+// Тёмная тема
+[data-theme="dark"] {
+  color-scheme: dark;
+  --color-bg: #0f1115;
+  --color-surface: #1b1f24;
+  --color-text: #e6e8eb;
+  --color-text-muted: #a8b0ba;
+  --color-border: #30363d;
+  --color-border-strong: #6e7681;
+  --color-hover: #262b31;
+  --color-primary: #7aa7ff;
+  --color-primary-hover: #9bbcff;
+  --color-on-primary: #0d1b33;
+  --color-danger: #ff8f85;
+  --color-focus: #ffd33d;
+}

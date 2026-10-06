@@ -1,0 +1,50 @@
+@use "../utils" as *;
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: $space-s;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  gap: $space-s;
+  padding: $space-s $space-m;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: $radius;
+
+  &__checkbox {
+    flex-shrink: 0;
+    width: $icon-size;
+    height: $icon-size;
+    margin: 0;
+    accent-color: var(--color-primary);
+    cursor: pointer;
+
+    @include focus;
+  }
+
+  &__title {
+    flex-grow: 1;
+    min-width: 0;
+    overflow-wrap: anywhere;
+    cursor: pointer;
+  }
+
+  &__actions {
+    display: flex;
+    flex-shrink: 0;
+    gap: $space-xs;
+  }
+
+  // Выполненная задача: зачёркнута и приглушена
+  &--done &__title {
+    color: var(--color-text-muted);
+    text-decoration: line-through;
+  }
+}
