@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Список задач</title>
+  <link rel="stylesheet" href="dist/css/main.css">
+</head>
+<body class="bg-[#f3f4f6] font-sans text-[#1f2328]">
+  <header class="border-b border-[#d0d7de] bg-white">
+    <div class="mx-auto w-full max-w-[720px] px-4 py-2 md:py-4">
+      <h1 class="text-xl leading-[1.2] font-bold md:text-2xl">Список задач</h1>
+    </div>
+  </header>
+
+  <main class="mx-auto w-full max-w-[720px] px-4 pt-4 pb-6 md:pt-6 md:pb-8">
+    <div class="mb-4 flex flex-col gap-2 md:flex-row">
+      <div class="grow">
+        <label for="search-input" class="sr-only">Поиск задач</label>
+        <input type="search" id="search-input" class="js-search min-h-11 w-full rounded-lg border border-[#8c959f] bg-white px-4 py-2 text-[#1f2328] placeholder:text-[#57606a] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1f5fbf]" placeholder="Поиск по названию" autocomplete="off">
+      </div>
+
+      <button type="button" class="js-add-button inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-lg border border-[#1f5fbf] bg-[#1f5fbf] px-4 py-2 text-white hover:bg-[#184c99] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1f5fbf]">
+        <svg class="size-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <path d="M12 5v14M5 12h14"/>
+        </svg>
+        <span>Добавить задачу</span>
+      </button>
+    </div>
+
+    <ul class="js-task-list flex flex-col gap-2"></ul>
+  </main>
+
+  <!-- Модальное окно для добавления и редактирования -->
+  <dialog class="js-modal m-auto w-[calc(100%-2rem)] max-w-[420px] rounded-lg border border-[#d0d7de] bg-white p-4 text-[#1f2328] backdrop:bg-black/50 md:p-6" aria-labelledby="modal-title">
+    <form class="js-modal-form" method="dialog">
+      <h2 id="modal-title" class="js-modal-title mb-4 text-xl leading-[1.2] font-bold">Новая задача</h2>
+
+      <label for="modal-input" class="mb-1 block">Название задачи</label>
+      <input type="text" id="modal-input" class="js-modal-input min-h-11 w-full rounded-lg border border-[#8c959f] bg-white px-4 py-2 text-[#1f2328] placeholder:text-[#57606a] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1f5fbf]" required autofocus autocomplete="off">
+
+      <div class="mt-6 flex flex-wrap justify-end gap-2">
+        <button type="submit" class="inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-lg border border-[#1f5fbf] bg-[#1f5fbf] px-4 py-2 text-white hover:bg-[#184c99] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1f5fbf]">Сохранить</button>
+        <button type="button" class="js-modal-cancel inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-lg border border-[#8c959f] bg-white px-4 py-2 text-[#1f2328] hover:bg-[#eef1f4] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1f5fbf]">Отмена</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Шаблон одной задачи -->
+  <template class="js-task-template">
+    <li class="group flex items-center gap-2 rounded-lg border border-[#d0d7de] bg-white px-2 py-1 md:gap-4 md:px-4 md:py-2" data-done="false">
+      <input type="checkbox" class="js-task-checkbox size-6 shrink-0 cursor-pointer accent-[#1f5fbf] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1f5fbf]">
+      <label class="js-task-title min-w-0 grow cursor-pointer py-2 wrap-anywhere group-data-[done=true]:text-[#57606a] group-data-[done=true]:line-through"></label>
+
+      <div class="flex shrink-0 gap-1">
+        <button type="button" class="js-edit-button inline-flex min-h-11 min-w-11 cursor-pointer items-center justify-center rounded-lg border border-[#8c959f] bg-white p-2 text-[#1f2328] hover:bg-[#eef1f4] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1f5fbf]">
+          <svg class="size-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M4 20h4L18.5 9.5a2.1 2.1 0 0 0-4-4L4 16v4z"/>
+            <path d="M13.5 6.5l4 4"/>
+          </svg>
+          <span class="js-edit-text sr-only">Редактировать</span>
+        </button>
+
+        <button type="button" class="js-delete-button inline-flex min-h-11 min-w-11 cursor-pointer items-center justify-center rounded-lg border border-[#8c959f] bg-white p-2 text-[#b42318] hover:bg-[#eef1f4] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1f5fbf]">
+          <svg class="size-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M4 7h16"/>
+            <path d="M10 11v6M14 11v6"/>
+            <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12"/>
+            <path d="M9 7V4h6v3"/>
+          </svg>
+          <span class="js-delete-text sr-only">Удалить</span>
+        </button>
+      </div>
+    </li>
+  </template>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
