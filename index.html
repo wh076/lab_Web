@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Лабораторная №5 — Введение в Vue</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 10px 15px;
+      border: none;
+      background: #ddd;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button.active {
+      background: #42b883;
+      color: white;
+    }
+    .task {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    input, button {
+      margin-top: 8px;
+      padding: 6px;
+    }
+    ul {
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <h1>Лабораторная №5 — Введение в Vue</h1>
+
+  <div class="tabs">
+    <button
+            v-for="(tab, i) in tabs"
+            :key="i"
+            :class="{ active: currentTab === i }"
+            @click="currentTab = i"
+    >
+      Задание {{ i + 1 }}
+    </button>
+  </div>
+
+  <div class="task">
+    <component :is="tabs[currentTab]"></component>
+  </div>
+</div>
+
+<script>
+  const { createApp, ref, defineComponent, computed, watch, onMounted, onUnmounted } = Vue
+
+  // --- ЗАДАНИЕ 1 ---
+  const Task1 = defineComponent({
+    data() {
+      return {
+        name: ''
+      }
+    },
+    template: `
+      <div>
+        <h2>Задача 1. Привет, Vue!</h2>
+        <input v-model="name" placeholder="Введите имя" />
+        <p>Привет, {{ name }}!</p>
+      </div>
+    `
+  })
+
+  // --- ЗАДАНИЕ 2 ---
+  const Task2 = defineComponent({
+    setup() {
+      const count = ref(0)
+
+      function increment() {
+        count.value++
+      }
+
+      return { count, increment }
+    },
+    template: `
+      <div>
+        <h2>Задача 2. Счётчик</h2>
+        <p>Счётчик: {{ count }}</p>
+        <button @click="increment">Увеличить</button>
+      </div>
+    `
+  })
+
+  // --- ЗАДАНИЕ 3 ---
+  const Task3 = defineComponent({
+    setup() {
+      const isVisible = ref(false)
+
+      function toggle() {
+        isVisible.value = !isVisible.value
+      }
+
+      return { isVisible, toggle }
+    },
+    template: `
+      <div>
+        <h2>Задача 3. Условный рендеринг</h2>
+        <button @click="toggle">{{ isVisible ? 'Скрыть описание' : 'Показать описание' }}</button>
+        <p v-if="isVisible">Vue — это фреймворк для создания пользовательских интерфейсов.</p>
+        <p v-else>Описание скрыто.</p>
+      </div>
+    `
+  })
+
+  // --- ЗАДАНИЕ 4 ---
+  const Task4 = defineComponent({
+    setup() {
+      const products = ref([
+        { id: 1, title: 'Хлеб' },
+        { id: 2, title: 'Молоко' },
+        { id: 3, title: 'Сыр' },
+        { id: 4, title: 'Яблоки' }
+      ])
+
+      return { products }
+    },
+    template: `
+      <div>
+        <h2>Задача 4. Список</h2>
+        <ul>
+          <li v-for="(product, index) in products" :key="product.id">
+            {{ index + 1 }}. {{ product.title }}
+          </li>
+        </ul>
+      </div>
+    `
+  })
+
+  // --- ЗАДАНИЕ 5 ---
+  const Task5 = defineComponent({
+    setup() {
+      const name = ref('')
+      const age = ref('')
+      const users = ref([])
+
+      function addUser() {
+        users.value.push({ name: name.value, age: age.value })
+        // очищаем поля после отправки
+        name.value = ''
+        age.value = ''
+      }
+
+      return { name, age, users, addUser }
+    },
+    template: `
+      <div>
+        <h2>Задача 5. Мини-форма</h2>
+        <form @submit.prevent="addUser">
+          <input v-model="name" placeholder="Имя" />
+          <input v-model="age" type="number" placeholder="Возраст" />
+          <button type="submit">Добавить</button>
+        </form>
+        <ul>
+          <li v-for="(user, index) in users" :key="index">
+            {{ user.name }}, возраст: {{ user.age }}
+          </li>
+        </ul>
+      </div>
+    `
+  })
+
+  // --- ЗАДАНИЕ 6 ---
+  const Task6 = defineComponent({
+    setup() {
+      const number = ref(0)
+
+      const square = computed(() => number.value * number.value)
+      const cube = computed(() => number.value * number.value * number.value)
+
+      return { number, square, cube }
+    },
+    template: `
+      <div>
+        <h2>Задача 6. Вычисляемые свойства</h2>
+        <input v-model.number="number" type="number" />
+        <p>Число: {{ number }}</p>
+        <p>Квадрат: {{ square }}</p>
+        <p>Куб: {{ cube }}</p>
+      </div>
+    `
+  })
+
+  // --- ЗАДАНИЕ 7 ---
+  const Task7 = defineComponent({
+    setup() {
+      const time = ref(new Date())
+      let timer = null
+
+      const greeting = computed(() => {
+        const hour = time.value.getHours()
+        if (hour >= 5 && hour < 12) return 'Доброе утро'
+        if (hour >= 12 && hour < 17) return 'Добрый день'
+        if (hour >= 17 && hour < 23) return 'Добрый вечер'
+        return 'Доброй ночи'
+      })
+
+      const timeText = computed(() => time.value.toLocaleTimeString())
+
+      watch(time, (newTime) => {
+        console.log('Время обновлено: ' + newTime.toLocaleTimeString())
+      })
+
+      onMounted(() => {
+        // запускаем таймер
+        timer = setInterval(() => {
+          time.value = new Date()
+        }, 1000)
+      })
+
+      onUnmounted(() => {
+        clearInterval(timer)
+      })
+
+      return { greeting, timeText }
+    },
+    template: `
+      <div>
+        <h2>Задача 7. Watch и жизненный цикл</h2>
+        <p>{{ greeting }}!</p>
+        <p>Текущее время: {{ timeText }}</p>
+      </div>
+    `
+  })
+
+  createApp({
+    components: { Task1, Task2, Task3, Task4, Task5, Task6, Task7 },
+    setup() {
+      const currentTab = ref(0)
+      const tabs = [Task1, Task2, Task3, Task4, Task5, Task6, Task7]
+      return { currentTab, tabs }
+    }
+  }).mount('#app')
+</script>
+</body>
+</html>
