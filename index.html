@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Мемная — любимые мемы</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Oswald:wght@500;700&family=Lobster&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1 class="header-title">Мемная</h1>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="gallery" class="gallery" aria-label="Галерея мемов">
+      <button class="card" type="button" data-meme="buttons">
+        <img class="card-img card-img-top" src="img/two-buttons.jpg" alt="Парень в поту выбирает между двумя красными кнопками">
+        <span class="card-body">
+          <span class="card-tag">Сценарий</span>
+          <span class="card-title">Две кнопки</span>
+          <span class="card-text">Попробуй нажать «Поспать», если получится</span>
+        </span>
+      </button>
+      <button class="card" type="button" data-meme="boyfriend">
+        <img class="card-img" src="img/boyfriend.jpg" alt="Парень оборачивается на прохожую девушку, его девушка возмущена">
+        <span class="card-body">
+          <span class="card-tag">Сценарий</span>
+          <span class="card-title">Отвлёкшийся парень</span>
+          <span class="card-text">Подпиши героев и посмотри, кто на кого отвлёкся</span>
+        </span>
+      </button>
+      <button class="card" type="button" data-meme="zhdun">
+        <img class="card-img card-img-top" src="img/zhdun.jpg" alt="Ждун — грустное существо с хоботком, которое сидит и ждёт">
+        <span class="card-body">
+          <span class="card-tag">Сценарий</span>
+          <span class="card-title">Ждун</span>
+          <span class="card-text">Загрузка, которая никогда не закончится</span>
+        </span>
+      </button>
+      <button class="card" type="button" data-meme="drake">
+        <img class="card-img" src="img/drake.jpg" alt="Дрейк отворачивается от одного варианта и одобряет другой">
+        <span class="card-body">
+          <span class="card-tag card-tag-edit">Редактор</span>
+          <span class="card-title">Дрейк</span>
+          <span class="card-text">Что не нравится и что нравится — подпиши сам</span>
+        </span>
+      </button>
+    </section>
+
+    <section id="buttons-view" class="view" hidden>
+      <div class="view-head">
+        <button class="btn btn-back" type="button" data-back>← Все мемы</button>
+        <h2 class="view-title">Две кнопки</h2>
+      </div>
+
+      <div id="buttons-scene" class="meme-box meme-box-narrow">
+        <img src="img/two-buttons.jpg" alt="Парень в поту выбирает между двумя красными кнопками">
+        <button id="btn-lab" class="choice choice-left" type="button">Сделать лабу</button>
+        <button id="btn-sleep" class="choice choice-right" type="button">Поспать</button>
+        <div id="sweat" class="sweat" aria-hidden="true">
+          <span class="drop"></span>
+          <span class="drop"></span>
+          <span class="drop"></span>
+          <span class="drop"></span>
+          <span class="drop"></span>
+          <span class="drop"></span>
+        </div>
+      </div>
+      <p id="buttons-tries" class="tries" aria-live="polite"></p>
+      <p id="buttons-result" class="result" aria-live="polite" hidden>Ладно, делаю лабу</p>
+
+      <div class="actions">
+        <button id="buttons-reset" class="btn" type="button">Сбросить</button>
+      </div>
+    </section>
+
+    <section id="boyfriend-view" class="view" hidden>
+      <div class="view-head">
+        <button class="btn btn-back" type="button" data-back>← Все мемы</button>
+        <h2 class="view-title">Отвлёкшийся парень</h2>
+      </div>
+
+      <form id="boyfriend-form" class="form">
+        <label class="field">
+          <span class="field-label">Кто отвлекается (парень)</span>
+          <input id="boyfriend-who" type="text" maxlength="40" required value="Я">
+        </label>
+        <label class="field">
+          <span class="field-label">Что должен делать (его девушка)</span>
+          <input id="boyfriend-should" type="text" maxlength="40" required value="Лабораторная">
+        </label>
+        <label class="field">
+          <span class="field-label">Что манит (девушка слева)</span>
+          <input id="boyfriend-lure" type="text" maxlength="40" required value="Новый сезон сериала">
+        </label>
+        <button class="btn btn-main" type="submit">Сохранить</button>
+      </form>
+
+      <div id="boyfriend-scene" hidden>
+        <div id="boyfriend-box" class="meme-box">
+          <div class="frame">
+            <img src="img/boyfriend.jpg" alt="Парень оборачивается на прохожую девушку, его девушка возмущена">
+            <div class="angry"></div>
+            <p id="label-lure" class="label label-lure"></p>
+            <p id="label-who" class="label label-who"></p>
+            <p id="label-should" class="label label-should"></p>
+          </div>
+        </div>
+        <p id="boyfriend-result" class="result" aria-live="polite" hidden>Классика</p>
+      </div>
+
+      <div id="boyfriend-actions" class="actions" hidden>
+        <button id="boyfriend-again" class="btn" type="button">Повторить</button>
+        <button id="boyfriend-reset" class="btn" type="button">Сбросить</button>
+        <button id="boyfriend-copy" class="btn btn-main" type="button">Скопировать ссылку</button>
+        <span id="boyfriend-msg" class="copy-msg" aria-live="polite"></span>
+      </div>
+    </section>
+
+    <section id="zhdun-view" class="view" hidden>
+      <div class="view-head">
+        <button class="btn btn-back" type="button" data-back>← Все мемы</button>
+        <h2 class="view-title">Ждун</h2>
+      </div>
+
+      <form id="zhdun-form" class="form">
+        <label class="field">
+          <span class="field-label">Чего ждём?</span>
+          <input id="zhdun-what" type="text" maxlength="60" required value="Ответ преподавателя">
+        </label>
+        <label class="field">
+          <span class="field-label">Время загрузки (секунды, от 3 до 120)</span>
+          <input id="zhdun-time" type="number" min="3" max="120" value="8" required>
+        </label>
+        <button class="btn btn-main" type="submit">Сохранить</button>
+      </form>
+
+      <div id="zhdun-scene" class="zhdun" hidden>
+        <img class="zhdun-img" src="img/zhdun.jpg" alt="Ждун — грустное существо с хоботком, которое сидит и ждёт">
+        <div class="zhdun-info">
+          <p id="zhdun-title" class="zhdun-title"></p>
+          <p id="zhdun-try" class="zhdun-try"></p>
+          <div class="progress"><div id="zhdun-bar" class="progress-bar"></div></div>
+          <p id="zhdun-percent" class="percent">0%</p>
+          <p id="zhdun-status" class="status"></p>
+        </div>
+      </div>
+
+      <div id="zhdun-actions" class="actions" hidden>
+        <button id="zhdun-reset" class="btn" type="button">Сбросить</button>
+        <button id="zhdun-copy" class="btn btn-main" type="button">Скопировать ссылку</button>
+        <span id="zhdun-msg" class="copy-msg" aria-live="polite"></span>
+      </div>
+    </section>
+
+    <section id="editor-view" class="view" hidden>
+      <div class="view-head">
+        <button class="btn btn-back" type="button" data-back>← Все мемы</button>
+        <h2 id="editor-title" class="view-title"></h2>
+      </div>
+
+      <div class="editor">
+        <div class="stage-wrap">
+          <div id="stage" class="stage">
+            <img id="stage-img" class="stage-img" src="" alt="">
+          </div>
+          <p class="hint">Текст можно перетаскивать мышью или пальцем</p>
+        </div>
+
+        <div class="panel">
+          <div id="blocks" class="blocks"></div>
+          <button id="add-block" class="btn" type="button">+ Добавить текст</button>
+
+          <fieldset class="styles">
+            <legend>Оформление выбранного текста</legend>
+            <label class="field">
+              <span class="field-label">Размер шрифта: <span id="size-val"></span></span>
+              <input id="font-size" type="range" min="16" max="90">
+            </label>
+            <div class="row">
+              <label class="field">
+                <span class="field-label">Цвет текста</span>
+                <input id="font-color" type="color">
+              </label>
+              <label class="field">
+                <span class="field-label">Цвет обводки</span>
+                <input id="stroke-color" type="color">
+              </label>
+            </div>
+            <label class="field">
+              <span class="field-label">Толщина обводки: <span id="stroke-val"></span></span>
+              <input id="stroke-width" type="range" min="0" max="8">
+            </label>
+            <label class="field">
+              <span class="field-label">Шрифт</span>
+              <select id="font-family">
+                <option value="Impact, Oswald, sans-serif">Impact</option>
+                <option value="Oswald, sans-serif">Oswald</option>
+                <option value="Lobster, cursive">Lobster</option>
+                <option value="Montserrat, sans-serif">Montserrat</option>
+              </select>
+            </label>
+          </fieldset>
+
+          <label class="field upload">
+            <span class="field-label">Своя картинка для фона</span>
+            <input id="upload" type="file" accept="image/*">
+          </label>
+
+          <div class="actions">
+            <button id="download" class="btn btn-main" type="button">Скачать PNG</button>
+            <button id="editor-reset" class="btn" type="button">Сбросить</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>Трофимов Михаил, ФИТ-241, 2026</p>
+    </div>
+  </footer>
+
+  <script src="js/scenes.js"></script>
+  <script src="js/editor.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
