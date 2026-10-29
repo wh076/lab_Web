@@ -1,0 +1,110 @@
+@use "../utils" as *;
+
+.ghost {
+  position: absolute;
+  z-index: 2;
+  width: $creature-size;
+  height: calc(#{$creature-size} * 1.2);
+  padding: 0;
+  background: none;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  transition: left 0.5s ease-out, top 0.5s ease-out;
+
+  @include focus;
+
+  &--running {
+    pointer-events: none;
+  }
+
+  &--found {
+    pointer-events: none;
+    animation: ghost-out 0.7s ease forwards;
+  }
+}
+
+.ghost-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter: drop-shadow(0 0 8px rgba(200, 170, 255, 0.7));
+  animation: ghost-float 3s ease-in-out infinite;
+
+  &__body {
+    fill: var(--color-ghost);
+  }
+
+  &__eye {
+    fill: #2a1840;
+  }
+
+  &__cheek {
+    fill: #ffb3c6;
+    opacity: 0.7;
+  }
+
+  &__paper {
+    fill: #fff8e1;
+    stroke: #c4b3dc;
+  }
+
+  &__mark {
+    font: 700 13px sans-serif;
+    fill: #d00000;
+  }
+}
+
+.decor {
+  position: absolute;
+  z-index: 1;
+  width: $creature-size;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+
+  svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+
+  &--spider {
+    width: calc(#{$creature-size} * 0.6);
+    animation: spider-bob 4s ease-in-out infinite;
+  }
+}
+
+.bat-svg__wing {
+  fill: #3b2a4f;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: bat-flap 0.4s ease-in-out infinite alternate;
+}
+
+@keyframes ghost-float {
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes ghost-out {
+  to {
+    opacity: 0;
+    transform: translate(-50%, -90%) scale(1.5) rotate(15deg);
+  }
+}
+
+@keyframes spider-bob {
+  50% {
+    transform: translate(-50%, -40%);
+  }
+}
+
+@keyframes bat-flap {
+  to {
+    transform: scaleY(0.5);
+  }
+}

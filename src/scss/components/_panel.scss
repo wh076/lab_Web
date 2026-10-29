@@ -1,0 +1,54 @@
+@use "../utils" as *;
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $space-m;
+  background-color: rgba(var(--color-dark), 0.7);
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-l;
+  width: 100%;
+  max-width: 420px;
+  padding: $space-l;
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-purple);
+  border-radius: $radius;
+  box-shadow: 0 0 40px rgba(155, 93, 229, 0.5);
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: $space-s $space-l;
+  margin: 0;
+  padding: 0;
+  font-size: 1.5rem;
+  font-variant-numeric: tabular-nums;
+  list-style: none;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: $space-s;
+
+    &--record {
+      color: var(--color-focus);
+    }
+  }
+
+  &__icon {
+    width: 28px;
+    height: 28px;
+    color: var(--color-orange);
+  }
+}

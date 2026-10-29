@@ -1,0 +1,63 @@
+@use "../utils" as *;
+
+.scare {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  overflow: hidden;
+  pointer-events: none;
+
+  &__pumpkin {
+    width: min(60vw, 280px);
+    animation: scare-jump 0.9s cubic-bezier(0.3, 1.6, 0.5, 1) both;
+
+    svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__text {
+    margin: 0;
+    font-family: $font-title;
+    font-size: clamp(3rem, 16vw, 7rem);
+    color: var(--color-orange);
+    text-shadow: 0 0 20px rgba(155, 93, 229, 0.9);
+    animation: scare-pop 0.5s ease 0.4s both;
+  }
+}
+
+@keyframes scare-jump {
+  0% {
+    transform: translateY(110%);
+  }
+
+  60% {
+    transform: translateY(-12%) scaleY(1.08);
+  }
+
+  80% {
+    transform: translateY(4%) scaleY(0.94);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes scare-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) rotate(-10deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(-6deg);
+  }
+}

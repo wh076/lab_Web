@@ -1,0 +1,56 @@
+@use "../utils" as *;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-s;
+  min-height: $control-height;
+  padding: $space-s $space-m;
+  font: inherit;
+  font-weight: 700;
+  color: var(--color-text);
+  background-color: var(--color-surface-light);
+  border: 2px solid var(--color-purple);
+  border-radius: $radius;
+  cursor: pointer;
+
+  @include focus;
+
+  &--primary {
+    color: var(--color-on-orange);
+    background-color: var(--color-orange);
+    border-color: var(--color-orange);
+
+    &:hover {
+      background-color: var(--color-orange-hover);
+    }
+  }
+
+  &--outline {
+    font-size: 0.9rem;
+    background-color: transparent;
+
+    &:hover {
+      background-color: var(--color-surface-light);
+    }
+  }
+
+  &--icon {
+    min-width: $control-height;
+    padding: $space-s;
+  }
+
+  &--big {
+    min-height: 56px;
+    padding: $space-s $space-xl;
+    font-size: 1.25rem;
+    box-shadow: 0 0 24px rgba(255, 138, 31, 0.45);
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    width: $icon-size;
+    height: $icon-size;
+  }
+}

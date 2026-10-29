@@ -1,0 +1,56 @@
+@use "../utils" as *;
+
+.screen {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: $space-l $space-m;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(155, 93, 229, 0.35), transparent 60%),
+    radial-gradient(circle at 50% 100%, rgba(255, 138, 31, 0.2), transparent 50%),
+    var(--color-bg);
+
+  &__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-m;
+    width: 100%;
+    max-width: 560px;
+    text-align: center;
+  }
+
+  &__title {
+    font-family: $font-title;
+    font-size: clamp(2.5rem, 13vw, 5rem);
+    font-weight: 400;
+    color: var(--color-orange);
+    text-shadow: 0 0 18px rgba(155, 93, 229, 0.8);
+  }
+
+  &__web {
+    position: absolute;
+    top: 0;
+    width: 120px;
+    color: rgba(216, 207, 232, 0.35);
+
+    @include desktop {
+      width: 200px;
+    }
+
+    &--left {
+      left: 0;
+    }
+
+    &--right {
+      right: 0;
+      transform: scaleX(-1);
+    }
+  }
+}

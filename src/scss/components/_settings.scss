@@ -1,0 +1,17 @@
+@use "../utils" as *;
+
+.settings {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: $space-s;
+
+  [aria-pressed="false"] {
+    color: var(--color-text-muted);
+    border-color: var(--color-purple-dark);
+  }
+
+  [aria-pressed="true"] {
+    color: var(--color-focus);
+  }
+}

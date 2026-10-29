@@ -1,0 +1,30 @@
+// Хэллоуинская палитра
+:root {
+  color-scheme: dark;
+  --color-bg: #0d0714;
+  --color-surface: #1c1029;
+  --color-surface-light: #2a1840;
+  --color-text: #f3e9ff;
+  --color-text-muted: #c4b3dc;
+  --color-orange: #ff8a1f;
+  --color-orange-hover: #ffa64d;
+  --color-on-orange: #1a0b00;
+  --color-purple: #9b5de5;
+  --color-purple-dark: #5b2a86;
+  --color-ghost: #f4f1ff;
+  --color-focus: #ffd166;
+  --color-dark: 6, 3, 12;
+}
+
+// Фоны комнат
+.room--hall {
+  background: repeating-linear-gradient(90deg, #2b1640 0 24px, #321a4a 24px 48px);
+}
+
+.room--library {
+  background: linear-gradient(180deg, #1d2a22 0%, #24301f 70%, #140c0a 100%);
+}
+
+.room--attic {
+  background: linear-gradient(180deg, #2a1a12 0%, #3a2418 60%, #1a1008 100%);
+}

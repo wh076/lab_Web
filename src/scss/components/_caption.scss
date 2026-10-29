@@ -1,0 +1,43 @@
+@use "../utils" as *;
+
+.caption {
+  position: absolute;
+  z-index: 6;
+  max-width: 80%;
+  margin: 0;
+  padding: $space-xs $space-s;
+  font-weight: 700;
+  text-align: center;
+  color: var(--color-text);
+  background-color: rgba(28, 16, 41, 0.92);
+  border: 2px solid var(--color-orange);
+  border-radius: $radius;
+  pointer-events: none;
+  transform: translate(-50%, -100%);
+  animation: caption-up 1.8s ease forwards;
+
+  @include reduced-motion {
+    animation: none !important;
+  }
+}
+
+@keyframes caption-up {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+
+  15% {
+    opacity: 1;
+    transform: translate(-50%, -100%);
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -180%);
+  }
+}

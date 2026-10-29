@@ -1,0 +1,35 @@
+@use "../utils" as *;
+
+.leaves {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+
+  &__leaf {
+    position: absolute;
+    top: -40px;
+    opacity: 0.8;
+    animation-name: leaf-fall;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  @include reduced-motion {
+    display: none;
+  }
+}
+
+@keyframes leaf-fall {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+
+  50% {
+    transform: translate(-40px, 55vh) rotate(180deg);
+  }
+
+  100% {
+    transform: translate(30px, 110vh) rotate(360deg);
+  }
+}

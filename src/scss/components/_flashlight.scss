@@ -1,0 +1,24 @@
+// Слой темноты вдвое больше комнаты, центр двигается через transform
+.flashlight {
+  --radius: 120px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 214, 150, 0.12) 0,
+    rgba(255, 214, 150, 0) var(--radius),
+    rgba(var(--color-dark), 0.85) calc(var(--radius) * 1.25),
+    rgba(var(--color-dark), 0.98) calc(var(--radius) * 1.9)
+  );
+  will-change: transform;
+  transition: opacity 0.8s ease;
+}
+
+.room--lit .flashlight {
+  opacity: 0.3;
+}
