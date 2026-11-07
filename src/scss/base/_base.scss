@@ -28,3 +28,14 @@ h2 {
 .visually-hidden {
   @include visually-hidden;
 }
+
+.page-title {
+  margin-bottom: $space-m;
+  font-size: 1.5rem;
+}
+
+.link {
+  color: var(--color-primary);
+
+  @include focus;
+}

@@ -1,0 +1,51 @@
+@use "../utils" as *;
+
+.form-page {
+  max-width: 420px;
+  margin: 0 auto;
+
+  &__link {
+    margin: $space-m 0 0;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: $space-m;
+  padding: $space-m;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: $radius;
+
+  @include desktop {
+    padding: $space-l;
+  }
+
+  &__label {
+    display: block;
+    margin-bottom: $space-xs;
+  }
+
+  &__input {
+    @include field;
+
+    &[aria-invalid="true"] {
+      border: 2px solid var(--color-danger);
+    }
+  }
+
+  &__error {
+    margin: 0;
+    font-weight: 700;
+    color: var(--color-danger);
+  }
+
+  &__success {
+    margin: 0 0 $space-m;
+    padding: $space-s $space-m;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-primary);
+    border-radius: $radius;
+  }
+}
