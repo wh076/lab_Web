@@ -1,36 +1,53 @@
-name: Build and publish To-Do
+name: Build and publish all labs
 
 on:
   push:
-    branches: [lab6, lab7, lab9]
-  workflow_dispatch:
+    branches: [lab9]
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: github-pages
+  group: github-pages-all-labs
   cancel-in-progress: true
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.sha }}
+          path: sources/lab9
+          persist-credentials: false
+      - name: Get the other labs
+        run: |
+          for lab in lab1 lab2 lab3 lab4 lab4-tailwind lab5 lab6 lab7 lab_krinz2; do
+            git clone --depth 1 --single-branch --branch "$lab" \
+              "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY.git" "sources/$lab"
+          done
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24.13.0'
+          cache: npm
+          cache-dependency-path: sources/**/package-lock.json
+      - name: Build all labs
+        run: bash sources/lab9/.github/pages/build.sh sources site
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-node@v7
-        with:
-          node-version: lts/*
-          cache: npm
-      - run: npm ci
-      - run: npm run build
       - uses: actions/configure-pages@v6
-      - uses: actions/upload-pages-artifact@v5
-        with:
-          path: ./dist
       - id: deployment
         uses: actions/deploy-pages@v5
