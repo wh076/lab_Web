@@ -1,0 +1,41 @@
+@use '../utils' as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: $font-family;
+  font-size: $font-size-base;
+  line-height: $line-height;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+h1,
+h2 {
+  margin: 0;
+  line-height: 1.2;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.visually-hidden {
+  @include visually-hidden;
+}
+
+.page-title {
+  margin-bottom: $space-m;
+  font-size: 1.5rem;
+}
+
+.link {
+  color: var(--color-primary);
+
+  @include focus;
+}

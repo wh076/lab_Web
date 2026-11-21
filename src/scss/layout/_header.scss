@@ -1,0 +1,72 @@
+@use '../utils' as *;
+
+.header {
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+
+  &__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-s;
+    padding-top: $space-s;
+    padding-bottom: $space-s;
+
+    @include desktop {
+      gap: $space-m;
+      padding-top: $space-m;
+      padding-bottom: $space-m;
+    }
+  }
+
+  &__title {
+    font-size: 1.25rem;
+    font-weight: 700;
+
+    @include desktop {
+      font-size: 1.5rem;
+    }
+  }
+
+  &__user {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: $space-s;
+    min-width: 0;
+  }
+
+  &__email {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-xs;
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    min-height: $control-height;
+    padding: $space-s;
+    color: var(--color-text);
+    text-decoration: none;
+    border-radius: $radius;
+
+    &:hover {
+      background-color: var(--color-hover);
+    }
+
+    @include focus;
+
+    // Текущая страница
+    &[aria-current='page'] {
+      font-weight: 700;
+      text-decoration: underline;
+    }
+  }
+}
