@@ -1,5 +1,40 @@
 @use '../utils' as *;
 
+.todo-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-xs;
+  margin-bottom: $space-m;
+
+  [aria-selected='true'] {
+    color: var(--color-on-primary);
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+}
+
+.todo-filter {
+  @include field;
+  max-width: 15rem;
+}
+
+.todo-option {
+  display: flex;
+  align-items: center;
+  gap: $space-xs;
+  width: fit-content;
+  margin-bottom: $space-m;
+  cursor: pointer;
+
+  input {
+    width: $checkbox-size;
+    height: $checkbox-size;
+    accent-color: var(--color-primary);
+
+    @include focus;
+  }
+}
+
 .task-list {
   display: flex;
   flex-direction: column;
@@ -34,12 +69,44 @@
     @include focus;
   }
 
-  &__title {
+  &__details {
     flex-grow: 1;
     min-width: 0;
     padding: $space-s 0;
     overflow-wrap: anywhere;
+  }
+
+  &__title {
     cursor: pointer;
+  }
+
+  &__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: $space-xs $space-s;
+    margin-top: $space-xs;
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+  }
+
+  &__priority {
+    padding: 0 $space-xs;
+    border: 1px solid currentColor;
+    border-radius: $radius;
+
+    &--0 {
+      color: var(--priority-low);
+    }
+    &--1 {
+      color: var(--priority-normal);
+    }
+    &--2 {
+      color: var(--priority-high);
+    }
+    &--3 {
+      color: var(--color-danger);
+    }
   }
 
   &__actions {

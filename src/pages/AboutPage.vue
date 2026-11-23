@@ -1,9 +1,11 @@
 <script setup lang="ts">
+import { onMounted } from 'vue'
 import { useUserStore } from '../stores/user'
 import { useTodoStore } from '../stores/todo'
 
 const userStore = useUserStore()
 const todoStore = useTodoStore()
+onMounted(todoStore.refresh)
 </script>
 
 <template>
@@ -40,7 +42,7 @@ const todoStore = useTodoStore()
         </div>
         <div class="stats__item">
           <dt>Всего задач</dt>
-          <dd class="stats__value">{{ todoStore.tasks.length }}</dd>
+          <dd class="stats__value">{{ todoStore.totalTasks }}</dd>
         </div>
         <div v-if="userStore.isLoggedIn" class="stats__item">
           <dt>Ваших задач</dt>

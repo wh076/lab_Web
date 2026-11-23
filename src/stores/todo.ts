@@ -1,102 +1,53 @@
-import { ref, computed } from 'vue'
+import { ref, watch } from 'vue'
 import { defineStore } from 'pinia'
-import type { Task } from '../types'
+import type { Task, TaskDraft } from '../domain/todo'
+import { todoService } from '../setup/todo'
 import { useUserStore } from './user'
 
-function isTask(item: unknown): item is Task {
-  return (
-    item !== null &&
-    typeof item === 'object' &&
-    'id' in item &&
-    typeof item.id === 'string' &&
-    'userId' in item &&
-    typeof item.userId === 'string' &&
-    'title' in item &&
-    typeof item.title === 'string' &&
-    'done' in item &&
-    typeof item.done === 'boolean'
-  )
-}
+export const useTodoStore = defineStore('todo', () => {
+  const userStore = useUserStore()
+  const currentTasks = ref<Task[]>([])
+  const totalTasks = ref(0)
+  const loadError = ref('')
 
-export const useTodoStore = defineStore(
-  'todo',
-  function () {
-    const userStore = useUserStore()
-    const tasks = ref<Task[]>([])
-
-    const currentTasks = computed(function () {
-      return tasks.value.filter(function (task) {
-        return task.userId === userStore.currentUserId
-      })
-    })
-
-    function findTask(id: string) {
-      return currentTasks.value.find(function (task) {
-        return task.id === id
-      })
-    }
-
-    function add(title: string) {
+  function refresh() {
+    currentTasks.value = []
+    totalTasks.value = 0
+    loadError.value = ''
+    try {
       const userId = userStore.currentUser?.id
-      if (userId === undefined) {
-        return
-      }
-      tasks.value.push({
-        id: crypto.randomUUID(),
-        userId,
-        title: title,
-        done: false
-      })
-    }
-
-    function edit(id: string, title: string) {
-      const task = findTask(id)
-      if (task) {
-        task.title = title
-      }
-    }
-
-    function remove(id: string) {
-      if (findTask(id)) {
-        tasks.value = tasks.value.filter(function (task) {
-          return task.id !== id
-        })
-      }
-    }
-
-    function toggle(id: string) {
-      const task = findTask(id)
-      if (task) {
-        task.done = !task.done
-      }
-    }
-
-    // Поиск по названию, выполненные внизу списка
-    function search(text: string) {
-      const query = text.trim().toLowerCase()
-      const found = currentTasks.value.filter(function (task) {
-        return task.title.toLowerCase().includes(query)
-      })
-      const notDone = found.filter(function (task) {
-        return !task.done
-      })
-      const done = found.filter(function (task) {
-        return task.done
-      })
-      return notDone.concat(done)
-    }
-
-    return { tasks, currentTasks, findTask, add, edit, remove, toggle, search }
-  },
-  {
-    persist: {
-      key: 'lab7-tasks',
-      pick: ['tasks'],
-      // Убираем испорченные записи, как при загрузке в лабе №6
-      afterHydrate(context) {
-        const saved: unknown = context.store.tasks
-        context.store.tasks = Array.isArray(saved) ? saved.filter(isTask) : []
-      }
+      if (userId !== undefined) currentTasks.value = todoService.load(userId)
+      totalTasks.value = todoService.count()
+    } catch {
+      loadError.value =
+        'Не удалось загрузить задачи. Проверьте доступ к хранилищу браузера.'
     }
   }
-)
+
+  watch(() => userStore.currentUser?.id, refresh, {
+    immediate: true,
+    flush: 'sync'
+  })
+
+  function update(action: (userId: string) => Task[]) {
+    const userId = userStore.currentUser?.id
+    if (userId === undefined) throw new Error('Войдите, чтобы изменить задачи')
+    const tasks = action(userId)
+    totalTasks.value += tasks.length - currentTasks.value.length
+    currentTasks.value = tasks
+    loadError.value = ''
+  }
+
+  return {
+    currentTasks,
+    totalTasks,
+    loadError,
+    refresh,
+    add: (draft: TaskDraft) =>
+      update((userId) => todoService.add(userId, draft)),
+    edit: (id: string, draft: TaskDraft) =>
+      update((userId) => todoService.edit(userId, id, draft)),
+    toggle: (id: string) => update((userId) => todoService.toggle(userId, id)),
+    remove: (id: string) => update((userId) => todoService.remove(userId, id))
+  }
+})

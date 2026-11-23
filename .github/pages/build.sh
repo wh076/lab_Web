@@ -4,9 +4,9 @@ set -euo pipefail
 sources=$1
 site=$2
 mkdir "$site"
-cp "$sources/lab9/.github/pages/index.html" "$site/index.html"
+cp "$sources/lab10/.github/pages/index.html" "$site/index.html"
 
-for lab in lab1 lab2 lab3 lab4 lab4-tailwind lab5 lab6 lab7 lab9 lab_krinz2; do
+for lab in lab1 lab2 lab3 lab4 lab4-tailwind lab5 lab6 lab7 lab9 lab10 lab_krinz2; do
   echo "Building $lab"
   source_dir="$sources/$lab"
   target_dir="$site/$lab"
@@ -35,7 +35,7 @@ for lab in lab1 lab2 lab3 lab4 lab4-tailwind lab5 lab6 lab7 lab9 lab_krinz2; do
     lab5)
       cp "$source_dir/index.html" "$target_dir/"
       ;;
-    lab6|lab7|lab9|lab_krinz2)
+    lab6|lab7|lab9|lab10|lab_krinz2)
       base="/lab_Web/$lab/"
       (cd "$source_dir" && npm ci && npm run build -- --base "$base")
       cp -R "$source_dir/dist/." "$target_dir/"

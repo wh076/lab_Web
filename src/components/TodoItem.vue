@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Task } from '../types'
+import type { Task } from '../domain/todo'
 const props = defineProps<{ task: Task }>()
 
 const emit = defineEmits<{
@@ -12,6 +12,17 @@ const checkboxId = 'task-checkbox-' + props.task.id
 const titleId = 'task-title-' + props.task.id
 const editId = 'task-edit-' + props.task.id
 const deleteId = 'task-delete-' + props.task.id
+const priorities = ['Низкий', 'Обычный', 'Высокий', 'Очень высокий']
+const dateFormat = new Intl.DateTimeFormat('ru', {
+  dateStyle: 'short',
+  timeStyle: 'short'
+})
+
+function toggle(event: Event) {
+  if (event.target instanceof HTMLInputElement)
+    event.target.checked = props.task.done
+  emit('toggle', props.task.id)
+}
 </script>
 
 <template>
@@ -21,11 +32,34 @@ const deleteId = 'task-delete-' + props.task.id
       type="checkbox"
       class="task__checkbox"
       :checked="task.done"
-      @change="emit('toggle', task.id)"
+      @change="toggle"
     />
-    <label :id="titleId" class="task__title" :for="checkboxId">{{
-      task.title
-    }}</label>
+    <div class="task__details">
+      <label :id="titleId" class="task__title" :for="checkboxId">{{
+        task.title
+      }}</label>
+      <div class="task__meta">
+        <span
+          class="task__priority"
+          :class="'task__priority--' + task.priority"
+        >
+          Приоритет: {{ priorities[task.priority] }}
+        </span>
+        <span v-if="task.startDate">
+          Начало:
+          <time :datetime="task.startDate">{{
+            dateFormat.format(new Date(task.startDate))
+          }}</time>
+        </span>
+        <span v-if="task.dueDate">
+          Дедлайн:
+          <time :datetime="task.dueDate">{{
+            dateFormat.format(new Date(task.dueDate))
+          }}</time>
+        </span>
+        <span v-if="task.tags.length">Метки: {{ task.tags.join(', ') }}</span>
+      </div>
+    </div>
 
     <div class="task__actions">
       <button

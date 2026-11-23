@@ -29,6 +29,17 @@
 
   &__input {
     @include field;
+    min-width: 0;
+  }
+
+  &__fields {
+    display: grid;
+    gap: $space-s;
+    margin-top: $space-m;
+  }
+
+  &__error {
+    margin-top: $space-m;
   }
 
   &__actions {

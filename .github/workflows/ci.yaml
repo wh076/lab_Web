@@ -2,7 +2,7 @@ name: Build and publish all labs
 
 on:
   push:
-    branches: [lab9]
+    branches: [lab10]
 
 permissions:
   contents: read
@@ -18,11 +18,11 @@ jobs:
       - uses: actions/checkout@v7
         with:
           ref: ${{ github.sha }}
-          path: sources/lab9
+          path: sources/lab10
           persist-credentials: false
       - name: Get the other labs
         run: |
-          for lab in lab1 lab2 lab3 lab4 lab4-tailwind lab5 lab6 lab7 lab_krinz2; do
+          for lab in lab1 lab2 lab3 lab4 lab4-tailwind lab5 lab6 lab7 lab9 lab_krinz2; do
             git clone --depth 1 --single-branch --branch "$lab" \
               "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY.git" "sources/$lab"
           done
@@ -32,7 +32,7 @@ jobs:
           cache: npm
           cache-dependency-path: sources/**/package-lock.json
       - name: Build all labs
-        run: bash sources/lab9/.github/pages/build.sh sources site
+        run: bash sources/lab10/.github/pages/build.sh sources site
       - uses: actions/upload-pages-artifact@v5
         with:
           path: site

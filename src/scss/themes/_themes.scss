@@ -14,6 +14,9 @@
   --color-on-primary: #ffffff;
   --color-danger: #b42318;
   --color-focus: #1f5fbf;
+  --priority-low: #41634e;
+  --priority-normal: #1f5fbf;
+  --priority-high: #8a4b08;
 }
 
 // Тёмная тема
@@ -31,4 +34,7 @@
   --color-on-primary: #0d1b33;
   --color-danger: #ff8f85;
   --color-focus: #ffd33d;
+  --priority-low: #9acba6;
+  --priority-normal: #9bbcff;
+  --priority-high: #ffbf75;
 }
